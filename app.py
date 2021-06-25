@@ -14,11 +14,11 @@ def api():
     flag=int(d['Query'])
     if flag==1:
         f = open("file.txt", "w")
-        f.write("yes")
+        f.write("1")
         f.close()
     else:
         f = open("file.txt", "w")
-        f.write("no")
+        f.write("0")
         f.close()
     return jsonify(d)
 
