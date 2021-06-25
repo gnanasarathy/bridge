@@ -6,14 +6,21 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello World'
 
+r = {}
+r['state'] = 0
+
 @app.route('/api',methods=['GET'])
 def api():
     d = {}
-    r = {}
-    r['state'] = 0
     d['Query'] = str(request.args['Query'])
     if d['Query'] == '1':
         r['state']= 1
+    else:
+        r['state']= 0
+    return jsonify(d)
+
+@app.route('/ans')
+def ans():
     return jsonify(r)
 
 
