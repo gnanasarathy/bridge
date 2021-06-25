@@ -9,8 +9,12 @@ def hello_world():
 @app.route('/api',methods=['GET'])
 def api():
     d = {}
+    r = {}
+    r['state'] = 0
     d['Query'] = str(request.args['Query'])
-    return jsonify(d)
+    if d['Query'] == '1':
+        r['state']= 1
+    return jsonify(r)
 
 
 if __name__ == '__main__':
