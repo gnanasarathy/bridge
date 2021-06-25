@@ -6,23 +6,27 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello World'
 
-r=0
 
 @app.route('/api',methods=['GET'])
 def api():
-    global r
     d = {}
     d['Query'] = str(request.args['Query'])
     flag=int(d['Query'])
     if flag==1:
-        r=1
+        f = open("file.txt", "w")
+        f.write("yes")
+        f.close()
     else:
-        r=0
+        f = open("file.txt", "w")
+        f.write("no")
+        f.close()
     return jsonify(d)
 
 @app.route('/ans')
 def ans():
-    return jsonify(r)
+    f = open("file.txt", "r")
+    t=f.read()
+    return jsonify(t)
 
 
 if __name__ == '__main__':
